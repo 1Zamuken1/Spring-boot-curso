@@ -1,42 +1,21 @@
-package com.zamuken.Spring_boot_curso;
+package com.zamuken.Spring_boot_curso.product.infrastructure.dataBase.apiRest;
 
+import com.zamuken.Spring_boot_curso.common.mediator.Mediator;
+import com.zamuken.Spring_boot_curso.product.domain.Product;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/products")
+@RequiredArgsConstructor
+public class ProductController implements ProductApi {
 
-public class ProductController {
-
-    public List<Product> products;
-
-    public ProductController() {
-        this.products = new ArrayList<>();
-        products.add(
-                Product.builder()
-                        .id(1L)
-                        .name("Product 1")
-                        .description("Description 1")
-                        .precio(100.0)
-                        .image("Image 1")
-                        .build()
-        );
-        products.add(
-                Product.builder()
-                        .id(2L)
-                        .name("Product 2")
-                        .description("Description 2")
-                        .precio(200.0)
-                        .image("Image 2")
-                        .build()
-        );
-
-    }
+    private final Mediator mediator;
 
     @GetMapping("")
     public ResponseEntity<List<Product>> getAllProducts(@RequestParam(required = false) String PageSize) {

@@ -1,4 +1,4 @@
-package com.zamuken.Spring_boot_curso;
+package com.zamuken.Spring_boot_curso.product.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
